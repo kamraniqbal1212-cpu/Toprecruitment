@@ -7,7 +7,7 @@
   <meta name="description" content="Top Recruitment places vetted electricians, gas engineers and HGV drivers with employers across the UK. Cards, tickets and licences checked at source.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <style>
 /* ==========================================================================
@@ -32,12 +32,16 @@
   --white:    #ffffff;
 
   /* Type */
-  --font-display: 'Barlow', 'Helvetica Neue', Arial, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 
   /* Layout */
   --wrap: 1140px;
-  --radius: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ---------- Base ---------- */
@@ -58,11 +62,11 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.15;
   color: var(--brand-dark);
   margin: 0 0 .6em;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 h1 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); }
@@ -119,7 +123,7 @@ img { max-width: 100%; display: block; }
 
 .btn {
   display: inline-block;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: .01em;
@@ -128,7 +132,7 @@ img { max-width: 100%; display: block; }
   text-decoration: none;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+  transition: all var(--transition);
 }
 
 .btn--primary { background: var(--brand-accent); color: #0a0a0a; }
@@ -166,9 +170,9 @@ img { max-width: 100%; display: block; }
 .logo { display: flex; align-items: center; text-decoration: none; }
 .logo-mark {
   font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.55rem;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
   color: var(--brand-dark);
   line-height: 1;
 }
@@ -240,11 +244,13 @@ img { max-width: 100%; display: block; }
 .card {
   background: var(--white);
   border: 1px solid var(--brand-line);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 30px 28px;
   display: flex;
   flex-direction: column;
+  transition: box-shadow var(--transition), transform var(--transition);
 }
+.card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
 .card h3 { margin-bottom: .5em; }
 .card p { color: var(--ink-soft); font-size: .98rem; }
 
@@ -334,10 +340,11 @@ img { max-width: 100%; display: block; }
   background: var(--white);
   border: 1px solid var(--brand-line);
   border-top: 4px solid var(--brand-accent);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   padding: 34px 32px;
+  box-shadow: var(--shadow);
 }
-.panel--tint { background: var(--brand-light); }
+.panel--tint { background: var(--brand-light); box-shadow: none; }
 
 /* ---------- CTA band ---------- */
 
@@ -398,14 +405,15 @@ img { max-width: 100%; display: block; }
   border-radius: var(--radius);
   background: var(--white);
   color: var(--ink);
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 .form-field textarea { min-height: 120px; resize: vertical; }
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus {
-  outline: 2px solid var(--brand-mid);
-  outline-offset: 1px;
+  outline: none;
   border-color: var(--brand-mid);
+  box-shadow: 0 0 0 3px rgba(45,127,249,0.1);
 }
 .form-note { font-size: .87rem; color: var(--ink-soft); margin-top: 14px; }
 
